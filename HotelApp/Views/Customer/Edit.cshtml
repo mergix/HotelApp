@@ -1,9 +1,9 @@
 @model Customer
 
-<form method="post">
+<form method="post" asp-action="Edit">
     <div class = "border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary"> Create Customer</h2>
+            <h2 class="text-primary"> Edit Customer</h2>
             <hr/>
         </div>
         @* <div asp-validation-summary="All"></div> *@
@@ -28,7 +28,7 @@
             <span asp-validation-for="CustomerPassword" class="text-danger"></span>
         </div>
         
-        <button type="submit" class="btn btn-primary" style="width: 150px">Create</button>
+        <button type="submit" class="btn btn-danger" style="width: 150px">Edit</button>
         <a asp-controller="Customer" asp-action="Index" class=" btn btn-secondary" style="width:150px "> Back to List</a>
     </div>
 </form>
@@ -40,6 +40,3 @@
     }
     
 }
-
-
-

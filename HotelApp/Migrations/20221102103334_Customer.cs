@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -19,8 +18,7 @@ namespace HotelApp.Migrations
                     CustomerName = table.Column<string>(type: "text", nullable: false),
                     CustomerEmail = table.Column<string>(type: "text", nullable: false),
                     CustomerAddress = table.Column<string>(type: "text", nullable: false),
-                    CustomerPassword = table.Column<string>(type: "text", nullable: false),
-                    DateJoined = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    CustomerPassword = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
