@@ -1,6 +1,7 @@
 using HotelApp.Data;
 using HotelApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelApp.Controllers;
 
@@ -20,6 +21,11 @@ public class CustomerController : Controller
         return View(objCustomerList);
     }
 
+    public IActionResult Login()
+    {
+        return View();
+    }
+
     //GET
     public IActionResult Create()
     {
@@ -31,7 +37,7 @@ public class CustomerController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Create(Customer obj)
     {
-        if (obj.CustomerName == obj.CustomerPassword.ToString())
+        if (obj.CustomerName == obj.CustomerPassword)
         {
             ModelState.AddModelError("customername","Your Password cannot be the same as your name.");
         }
@@ -39,9 +45,9 @@ public class CustomerController : Controller
         {
             _db.Customers.Add(obj);
             _db.SaveChanges();
+            TempData["success"] = "Customer added sucessfully ";
             return RedirectToAction("Index");
         }
-
         return View(obj);
     }
     
@@ -57,8 +63,8 @@ public class CustomerController : Controller
 
         
         var customerFromDb = _db.Customers.Find(id);
-        // var customerFromDbFirst = _db.Customers.FirstOrDefault(u=> u.CustomerId == id);
-        // var customerFromDbSingle = _db.Customers.SingleOrDefault(u=> u.CustomerId == id);
+        //var customerFromDbFirst = _db.Customers.FirstOrDefault(u=> u.CustomerId == Customerid);
+        //var customerFromDbSingle = _db.Customers.SingleOrDefault(u=> u.CustomerId == customerid);
 
         if (customerFromDb == null)
         {
@@ -74,14 +80,13 @@ public class CustomerController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Edit(Customer obj)
     {
-        // if (obj.CustomerName == obj.CustomerPassword)
-        // {
-        //     ModelState.AddModelError("customername","Your Password cannot be the same as your name.");
-        // }
         if (ModelState.IsValid)
         {
+            
             _db.Customers.Update(obj);
+            //_db.Entry(obj).State = EntityState.Modified;
             _db.SaveChanges();
+            TempData["success"] = "Customer updated sucessfully ";
             return RedirectToAction("Index");
         }
         return View(obj);
@@ -111,17 +116,17 @@ public class CustomerController : Controller
     //Post
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult DeletePost(int? id)
+    public IActionResult DeletePost(int? CustomerId)
     {
-        var obj = _db.Customers.Find(id);
+        var  obj = _db.Customers.Find(CustomerId);
         if (obj == null)
         {
             return NotFound();
         }
-       
-            _db.Customers.Remove(obj);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+        _db.Customers.Remove(obj);
+        _db.SaveChanges();
+        TempData["success"] = "Customer deleted sucessfully ";
+        return RedirectToAction("Index");
         
     }
 }

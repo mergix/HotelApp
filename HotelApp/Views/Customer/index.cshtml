@@ -1,7 +1,7 @@
 @model  IEnumerable<Customer>
 @{
-    ViewBag.Title = "title";
-    //Layout = "_Layout";
+    ViewBag.Title = "index";
+    
 }
 
 <div class="container">
@@ -41,10 +41,12 @@
             </td>
             <td>
                 <div class="w-75 btn-group" role="group">
-                    <a asp-controller="Customer" asp-action="Edit" asp-route-id="@obj.CustomerId"
+                    <a asp-controller="Customer" asp-action="Edit"  asp-route-id="@obj.CustomerId"
                        class="btn btn-primary mx-2">  Edit</a>
                     <a asp-controller="Customer" asp-action="Delete" asp-route-id="@obj.CustomerId"
                        class="btn btn-danger mx-2"> Delete</a>
+                    <a asp-controller="Customer" asp-action="Login" 
+                       class="btn btn-primary mx-2"> Login</a>
                     
                 </div>
             </td>
