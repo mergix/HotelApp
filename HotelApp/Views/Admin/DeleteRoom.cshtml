@@ -1,0 +1,38 @@
+@model Room
+
+<form method="post" asp-action="DeleteRoomPost">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary"> Edit Customer</h2>
+            <hr/>
+        </div>
+        <div class="mb-3">
+            <input asp-for="RId" hidden class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="RName"></label>
+            <input asp-for="RName"disabled class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="RCost"></label>
+            <input asp-for="RCost"disabled class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="RComment"></label>
+            <input asp-for="RComment"disabled class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="RStatus"></label>
+            <input asp-for="RStatus"disabled class="form-control"/>
+        </div>
+        <button type="submit" class="btn btn-danger" style="width: 150px">Delete</button>
+        <a asp-controller="Admin" asp-action="Room" class=" btn btn-secondary" style="width:150px "> Back to List</a>
+    </div>
+</form>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

@@ -1,0 +1,39 @@
+@model User
+
+<style>
+  body{
+   
+  }
+  .container-fluid{
+  opacity: 0.9;
+  background-image: url(wwwroot/Img/SonnyBoyoriginalsoundtrack.jpg);
+  }
+</style>
+<div class="container-fluid" >
+    <div class="row">
+    <div class="col-md-4"></div>
+        <div class="col-md-4 bg-light rounded-3 ">
+          <h1 class="text-success text-center">Spectrum Hotel</h1>
+          <br />
+            <form>
+               <div class="mb-3">
+                 <label for="exampleInputEmail1">Email address</label>
+                 <input type="email" class="form-control" id="customerEmail"  placeholder="Enter email">
+               </div>
+               <div class="mb-3">
+                 <label for="exampleInputPassword1">Password</label>
+                 <input type="password" class="form-control" id="customerPassword" placeholder="Password">
+               </div>
+              <div class="mb-3">
+                <input type="radio" class="form-check-input" id="UserLI"><label class="text-success">User</label>
+                 <input type="radio" class="form-check-input" id="AdminLI"><label class="text-success">Admin</label>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-success btn-block">Login</button>
+              </div>
+              <br /> 
+             </form>
+        </div>
+        <div class="col-md-4"></div>
+        </div>
+</div>

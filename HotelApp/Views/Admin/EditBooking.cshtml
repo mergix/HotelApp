@@ -1,0 +1,42 @@
+@model Booking
+
+<form method="post" asp-action="EditBooking">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary"> Edit Booking</h2>
+            <hr/>
+        </div>
+        <div class="mb-3">
+            <input asp-for="BId" hidden class="form-control"/>
+        </div>
+         <div class="mb-3">
+                    <label asp-for="UserId"></label>
+                    <input asp-for="UserId" class="form-control"/>
+                    <span asp-validation-for="UserId" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="RId"></label>
+                    <input asp-for="RId" class="form-control"/>
+                    <span asp-validation-for="RId" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DateIn"></label>
+                    <input asp-for="DateIn" class="form-control"/>
+                    <span asp-validation-for="DateIn" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DateOut"></label>
+                    <input asp-for="DateOut" class="form-control"/>
+                    <span asp-validation-for="DateOut" class="text-danger"></span>
+                </div>
+        <button type="submit" class="btn btn-primary" style="width: 150px">Edit</button>
+        <a asp-controller="Admin" asp-action="Booking" class=" btn btn-secondary" style="width:150px "> Back to List</a>
+    </div>
+</form>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
