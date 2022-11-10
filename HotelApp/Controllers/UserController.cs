@@ -5,19 +5,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HotelApp.Controllers;
 
-public class CustomerController : Controller
+public class UserController : Controller
 {
 
     private readonly ApplicationDbContext _db;
 
-    public CustomerController(ApplicationDbContext db)
+    public UserController(ApplicationDbContext db)
     {
         _db = db;
     }
     // GET
     public IActionResult Index()
     {
-       IEnumerable<Customer> objCustomerList = _db.Customers;
+       IEnumerable<User> objCustomerList = _db.Users;
         return View(objCustomerList);
     }
 
@@ -35,15 +35,15 @@ public class CustomerController : Controller
     //Post
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(Customer obj)
+    public IActionResult Create(User obj)
     {
-        if (obj.CustomerName == obj.CustomerPassword)
+        if (obj.UserName == obj.UserPassword)
         {
             ModelState.AddModelError("customername","Your Password cannot be the same as your name.");
         }
         if (ModelState.IsValid)
         {
-            _db.Customers.Add(obj);
+            _db.Users.Add(obj);
             _db.SaveChanges();
             TempData["success"] = "Customer added sucessfully ";
             return RedirectToAction("Index");
@@ -62,7 +62,7 @@ public class CustomerController : Controller
         }
 
         
-        var customerFromDb = _db.Customers.Find(id);
+        var customerFromDb = _db.Users.Find(id);
         //var customerFromDbFirst = _db.Customers.FirstOrDefault(u=> u.CustomerId == Customerid);
         //var customerFromDbSingle = _db.Customers.SingleOrDefault(u=> u.CustomerId == customerid);
 
@@ -78,12 +78,12 @@ public class CustomerController : Controller
     //Post
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(Customer obj)
+    public IActionResult Edit(User obj)
     {
         if (ModelState.IsValid)
         {
             
-            _db.Customers.Update(obj);
+            _db.Users.Update(obj);
             //_db.Entry(obj).State = EntityState.Modified;
             _db.SaveChanges();
             TempData["success"] = "Customer updated sucessfully ";
@@ -100,7 +100,7 @@ public class CustomerController : Controller
             return NotFound();
         }
 
-        var customerFromDb = _db.Customers.Find(id);
+        var customerFromDb = _db.Users.Find(id);
         // var customerFromDbFirst = _db.Customers.FirstOrDefault(u=> u.CustomerId == id);
         // var customerFromDbSingle = _db.Customers.SingleOrDefault(u=> u.CustomerId == id);
 
@@ -116,14 +116,14 @@ public class CustomerController : Controller
     //Post
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult DeletePost(int? CustomerId)
+    public IActionResult DeletePost(int? UserId)
     {
-        var  obj = _db.Customers.Find(CustomerId);
+        var  obj = _db.Users.Find(UserId);
         if (obj == null)
         {
             return NotFound();
         }
-        _db.Customers.Remove(obj);
+        _db.Users.Remove(obj);
         _db.SaveChanges();
         TempData["success"] = "Customer deleted sucessfully ";
         return RedirectToAction("Index");

@@ -1,0 +1,51 @@
+@model User
+
+<form method="post">
+    <div class = "border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary"> Create User</h2>
+            <hr/>
+        </div>
+        @* <div asp-validation-summary="All"></div> *@
+        <div class="mb-3">
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" class="form-control"/>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UserEmail"></label>
+            <input asp-for="UserEmail" class="form-control"/>
+            <span asp-validation-for="UserEmail" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UserAddress"></label>
+            <input asp-for="UserAddress" class="form-control"/>
+            <span asp-validation-for="UserAddress" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UserPassword"></label>
+            <input asp-for="UserPassword" class="form-control"/>
+            <span asp-validation-for="UserPassword" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UserGender"></label>
+            <input asp-for="UserGender" class="form-control"/>
+            <span asp-validation-for="UserGender" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="DateJoined"></label>
+            <input asp-for="DateJoined" class="form-control"/>
+            <span asp-validation-for="DateJoined" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 150px">Create</button>
+        <a asp-controller="Admin" asp-action="User" class=" btn btn-secondary" style="width:150px "> Back to List</a>
+    </div>
+</form>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+    
+}

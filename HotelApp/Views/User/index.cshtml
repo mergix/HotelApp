@@ -1,4 +1,4 @@
-@model  IEnumerable<Customer>
+@model  IEnumerable<User>
 @{
     ViewBag.Title = "index";
     
@@ -10,7 +10,7 @@
             <h2 class="text-primary"> Customer List</h2>
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="Customer" asp-action="Create" class="btn btn-primary">
+            <a asp-controller="User" asp-action="Create" class="btn btn-primary">
                 Create a new Customer Entry
             </a>
         </div>
@@ -34,18 +34,18 @@
     {
         <tr>
             <td style="width: 50%">
-                @obj.CustomerName
+                @obj.UserName
             </td>
             <td style="width: 30%">
-                @obj.CustomerEmail
+                @obj.UserEmail
             </td>
             <td>
                 <div class="w-75 btn-group" role="group">
-                    <a asp-controller="Customer" asp-action="Edit"  asp-route-id="@obj.CustomerId"
+                    <a asp-controller="User" asp-action="Edit"  asp-route-id="@obj.UserId"
                        class="btn btn-primary mx-2">  Edit</a>
-                    <a asp-controller="Customer" asp-action="Delete" asp-route-id="@obj.CustomerId"
+                    <a asp-controller="User" asp-action="Delete" asp-route-id="@obj.UserId"
                        class="btn btn-danger mx-2"> Delete</a>
-                    <a asp-controller="Customer" asp-action="Login" 
+                    <a asp-controller="User" asp-action="Login" 
                        class="btn btn-primary mx-2"> Login</a>
                     
                 </div>

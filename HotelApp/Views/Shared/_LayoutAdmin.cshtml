@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - HotelApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/HotelApp.styles.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/Index-style.css"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Spectrum Hotel Management Site </a>
+            <form class="d-flex">
+                <input class="form-control me-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</header>
+ <input type="checkbox" id="check"/>
+<label for="check">
+    <i class="bi bi-list" id="btn"></i>
+    <i class="bi bi-x-circle-fill" id="close"></i>
+</label>
+<div class="sidebar">
+        <h1>Menu</h1>
+        <ul>
+            <li><a asp-controller="Admin" asp-action="Room"><i class="bi bi-dice-1"></i> Manage Rooms</a></li>
+            <li><a asp-controller="Admin" asp-action="Booking"><i class="bi bi-dice-2"></i>Manage Bookings</a></li>
+            <li><a asp-controller="Admin" asp-action="User"><i class="bi bi-dice-3"></i> Manage Users</a></li>
+        </ul>
+    </div>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+<footer class=" footer text-muted bg-dark">
+    <div class="container">
+        &copy; 2022 - HotelApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

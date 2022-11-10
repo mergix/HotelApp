@@ -1,0 +1,42 @@
+@model Room
+
+<form method="post" asp-action="EditRoom">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary"> Edit Customer</h2>
+            <hr/>
+        </div>
+        <div class="mb-3">
+            <input asp-for="RId" hidden class="form-control"/>
+        </div>
+         <div class="mb-3">
+                   <label asp-for="RName"></label>
+                   <input asp-for="RName" class="form-control"/>
+                   <span asp-validation-for="RName" class="text-danger"></span>
+               </div>
+               <div class="mb-3">
+                   <label asp-for="RCost"></label>
+                   <input asp-for="RCost" class="form-control"/>
+                   <span asp-validation-for="RCost" class="text-danger"></span>
+               </div>
+               <div class="mb-3">
+                   <label asp-for="RComment"></label>
+                   <input asp-for="RComment" class="form-control"/>
+                   <span asp-validation-for="RComment" class="text-danger"></span>
+               </div>
+               <div class="mb-3">
+                   <label asp-for="RStatus"></label>
+                   <input asp-for="RStatus" class="form-control"/>
+                   <span asp-validation-for="RStatus" class="text-danger"></span>
+               </div>
+        <button type="submit" class="btn btn-primary" style="width: 150px">Edit</button>
+        <a asp-controller="Admin" asp-action="Room" class=" btn btn-secondary" style="width:150px "> Back to List</a>
+    </div>
+</form>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
